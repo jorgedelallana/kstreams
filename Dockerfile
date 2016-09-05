@@ -2,10 +2,7 @@ FROM java:8
 
 MAINTAINER architecture@datiobd.com
 
-ADD kafka-stream-1.0-SNAPSHOT-bin.tar.gz /opt/
+ADD kafka-stream-1.0-SNAPSHOT-jar-with-dependencies.jar /opt/
+ADD app.sh /opt/
 
-RUN tar -xvf /opt/kafka-stream-1.0-SNAPSHOT-bin.tar.gz
-
-#Execute microservice
-WORKDIR /opt/kafka-stream-1.0-SNAPSHOT/bin/
-ENTRYPOINT ./Main
+RUN ["chmod", "+x", "/opt/app.sh"]
